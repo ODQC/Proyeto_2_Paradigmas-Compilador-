@@ -1,0 +1,12 @@
+let 
+  const m ~ 7;
+  const m ~ 8;
+  var n: Integer
+  
+in
+	begin
+		n := 2 * m;
+		print(s)
+	end
+		
+	

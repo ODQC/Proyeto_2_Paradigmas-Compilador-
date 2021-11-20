@@ -1,0 +1,9 @@
+let 
+	var n : Integer;
+	const b ~ 5
+in 
+	while b 
+		begin
+		n = 0;
+		b := false
+		

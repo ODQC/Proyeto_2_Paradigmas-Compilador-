@@ -1,0 +1,8 @@
+let 
+	var n : Integer
+in 
+	begin
+	n := k + 2s;
+	y = y + 2;
+	
+		

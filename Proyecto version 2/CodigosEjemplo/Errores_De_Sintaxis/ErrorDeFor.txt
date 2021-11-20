@@ -1,0 +1,8 @@
+let 
+var n : integer;
+const b ~ false 
+in 
+for b in H;
+begin
+n := 0;
+b := 2false

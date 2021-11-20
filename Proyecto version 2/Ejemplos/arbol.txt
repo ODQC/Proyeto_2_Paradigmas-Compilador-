@@ -1,0 +1,165 @@
+RAMA : 0 
+Program
+Single-Command
+let
+
+RAMA : 1 
+Program
+Single-Command
+Declaration
+Single-Declaration
+const
+
+RAMA : 2 
+Program
+Single-Command
+Declaration
+Single-Declaration
+Identificador
+m
+
+RAMA : 3 
+Program
+Single-Command
+Declaration
+Single-Declaration
+~
+
+RAMA : 4 
+Program
+Single-Command
+Expression
+Primary-Expression
+Integer-Literal
+7
+
+RAMA : 5 
+Program
+Single-Command
+;
+
+RAMA : 6 
+Program
+Single-Command
+Declaration
+Single-Declaration
+var
+
+RAMA : 7 
+Program
+Single-Command
+Declaration
+Single-Declaration
+Identificador
+n
+
+RAMA : 8 
+Program
+Single-Command
+Declaration
+Single-Declaration
+:
+
+RAMA : 9 
+Program
+Single-Command
+Declaration
+Single-Declaration
+Type-Denoter
+Identificador
+Integer
+
+RAMA : 10 
+Program
+Single-Command
+in
+
+RAMA : 11 
+Program
+Single-Command
+begin
+
+RAMA : 12 
+Program
+Single-Command
+V-Name
+Identificador
+n
+
+RAMA : 13 
+Program
+Single-Command
+:=
+
+RAMA : 14 
+Program
+Single-Command
+Expression
+Primary-Expression
+Integer-Literal
+2
+
+RAMA : 15 
+Program
+Single-Command
+Expression
+Operador
+*
+
+RAMA : 16 
+Program
+Single-Command
+Expression
+Primary-Expression
+V-Name
+Identificador
+m
+
+RAMA : 17 
+Program
+Single-Command
+Expression
+Operador
+*
+
+RAMA : 18 
+Program
+Single-Command
+Expression
+Primary-Expression
+V-Name
+Identificador
+m
+
+RAMA : 19 
+Program
+Single-Command
+V-Name
+Identificador
+putint
+
+RAMA : 20 
+Program
+Single-Command
+(
+
+RAMA : 21 
+Program
+Single-Command
+Expression
+Primary-Expression
+V-Name
+Identificador
+n
+
+RAMA : 22 
+Program
+Single-Command
+Expression
+)
+
+RAMA : 23 
+Program
+Single-Command
+end
+

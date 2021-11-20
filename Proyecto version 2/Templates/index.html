@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en" style="background: var(--bs-gray-dark);">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>Template</title>
+    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Bitter:400,700">
+    <link rel="stylesheet" href="assets/css/Footer-Dark.css">
+    <link rel="stylesheet" href="assets/css/Header-Dark.css">
+    <link rel="stylesheet" href="assets/css/styles.css">
+    <title>Compilador</title>
+
+
+
+
+    <script language="javascript" type="text/javascript" src="https://codemirror.net/lib/codemirror.js"></script>
+    <script language="javascript" type="text/javascript" src="https://codemirror.net/mode/perl/perl.js"></script>
+
+    <link rel="stylesheet" type="text/css" href="https://codemirror.net/lib/codemirror.css">
+    </link>
+    <link rel="stylesheet" type="text/css" href="https://codemirror.net/theme/abbott.css">
+    </link>
+
+
+
+</head>
+
+<body>
+    <header class="header-dark"
+        style="height: 802px;color: var(--bs-gray-200);background: var(--bs-gray-dark);padding-bottom: 39px;">
+        <nav class="navbar navbar-dark navbar-expand-lg navigation-clean-search"
+            style="background: var(--bs-gray-900);color: rgb(255, 255, 255);">
+            <div class="container"><a class="navbar-brand" href="#">Compilador</a><button class="navbar-toggler"
+                    data-bs-toggle="collapse"><span class="visually-hidden">Toggle navigation</span><span
+                        class="navbar-toggler-icon"></span>
+                </button>
+                <!--                                       BOTON DE COMPILAR            -->
+
+                <div class="btn-group" role="group"></div>
+            </div>
+        </nav>
+
+        <div class="container">
+            <div class="row" style="padding-bottom: 30px;">
+                <div class="col-md-3">
+
+                    <h3 style="padding-top: -3px;">Arbol variables</h3><textarea name="arbolTexto" id="arbolTexto"
+                        style="height: 626px;background: var(--bs-gray-600);color: var(--bs-body-bg);width: 270px;"
+                        disabled>{% if arbolCodigo %}{{arbolCodigo}}{% endif %}</textarea>
+                </div>
+                <div class="col">
+                    <footer class="footer-dark"
+                        style="height: 400px;padding: 21px 0px;background: var(--bs-gray-dark);">
+                        <form action="/result" method="POST">
+                        <div class="container">
+                            <!--                                       BOTON DE GUARDAR               -->
+                           
+                                <button class="btn btn-success mb-2" type="submit" name="guardar" id="guardar"> Compilar
+                                </button>
+                                <div class="row">
+                                    <div class="col" style="
+                                    background-color: #f7f7f7;
+                                ">
+                                        <h3 style="padding-top: -3px;color:var(--bs-gray-600);">Codigo</h3>
+                                    </div>
+
+                                    <textarea name="codigoText"
+                                        id="codigoText">{% if code %}{{code}}{% endif %}</textarea>
+
+                                </div>
+
+                   
+                        </div>
+                    </form>
+                    </footer>
+
+                    <footer class="footer-dark"
+                        style="height: 267px;padding: 21px 0px;background: var(--bs-gray-dark);">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col" style="background: var(--bs-gray-900);">
+                                    <h3 style="padding-top: -3px;">Debug console</h3>
+                                </div><textarea name="erroresTexto" id="erroresTexto"
+                                    style="height: 214px;background: var(--bs-gray-600);color: var(--bs-body-bg);"
+                                    disabled>{% if errores %}{{errores}}{% endif %}</textarea>
+                            </div>
+                        </div>
+                    </footer>
+
+                </div>
+            </div>
+        </div>
+        <footer class="footer-dark" style="padding-top: 104px;background: var(--bs-gray-900);">
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-6 col-md-3 item">
+                       
+                    </div>
+                    <div class="col-sm-6 col-md-3 item">
+                        
+                    </div>
+                    <div class="col-md-6 item text">
+                        
+                    </div>
+                </div>
+                <p class="copyright">Compilador paradigmas © 2021</p>
+            </div>
+        </footer>
+    </header>
+
+
+
+    <script>
+        var editor = CodeMirror.fromTextArea(document.getElementById('codigoText'), {
+            lineNumbers: true,
+            mode: 'text/x-perl',
+            theme: 'nord',
+        });
+        editor.setOption('theme', 'nord');
+
+
+
+
+    </script>
+
+    <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+
+    <script language="javascript" type="text/javascript" src="https://codemirror.net/lib/codemirror.js"></script>
+    <script language="javascript" type="text/javascript" src="https://codemirror.net/mode/perl/perl.js"></script>
+
+    <link rel="stylesheet" type="text/css" href="https://codemirror.net/lib/codemirror.css">
+    </link>
+    <link rel="stylesheet" type="text/css" href="https://codemirror.net/theme/abbott.css">
+    </link>
+
+
+</body>
+
+</html>

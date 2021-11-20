@@ -1,0 +1,10 @@
+let 
+const k ~ 0;
+var r : Boolean;
+const b ~ 10
+in 
+begin
+for r in lim b;
+print(k);
+s := k + 1
+end

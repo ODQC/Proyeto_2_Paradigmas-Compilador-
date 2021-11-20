@@ -1,0 +1,7 @@
+let 
+	vaRr n : integer;
+	const b ~ false 
+in 
+	while n do 
+		n := 2 + 2;
+		print(2n)

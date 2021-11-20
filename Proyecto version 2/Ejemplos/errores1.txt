@@ -1,0 +1,11 @@
+let 
+	const s ~ 8h;
+	var n : Integer;
+	var c : Boolean
+	
+in
+        begin
+	n := c + 1;
+	c := n;
+	hola := 2
+        

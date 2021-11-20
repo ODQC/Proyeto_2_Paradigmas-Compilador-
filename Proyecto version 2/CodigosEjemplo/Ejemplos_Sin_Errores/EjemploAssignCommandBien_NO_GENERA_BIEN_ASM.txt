@@ -1,0 +1,11 @@
+let 
+	var n : Boolean;
+	const b ~ 2
+in 
+	begin
+	n := true;
+	while n do 
+		n := false;
+		b := 2 + 5;
+		print(b)
+	end

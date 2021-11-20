@@ -1,0 +1,10 @@
+let 
+	const s ~ 8;
+	var n : Integer;
+	var c : Boolean
+	
+in
+        begin
+	n := n + 1;
+	c := c
+        end

@@ -1,0 +1,7 @@
+let 
+	varRRshs n : Integer;
+	const s = 2
+in 
+	if b > n 
+	then print(n) 
+	else print(b)

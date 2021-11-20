@@ -1,0 +1,7 @@
+let 
+	var n : Integer;
+	const b ~ 7
+in 
+	if b > n 
+	then print(n) 
+	print(2b)

@@ -1,0 +1,11 @@
+let 
+const k ~ 0;
+var r : Boolean;
+const b ~ 10
+in 
+begin
+r := true;
+while r do
+print(k);
+k := k + 1
+end

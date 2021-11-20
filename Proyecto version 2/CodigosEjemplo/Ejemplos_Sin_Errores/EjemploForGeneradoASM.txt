@@ -1,0 +1,10 @@
+let 
+const n ~ 5;
+const b ~ 20
+in
+begin 
+for n in lim b;
+print(n);
+n := n + 1
+end
+

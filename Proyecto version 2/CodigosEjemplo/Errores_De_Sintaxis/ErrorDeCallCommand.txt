@@ -1,0 +1,7 @@
+let 
+	var n : 2;
+	const b ~ false 
+in 
+	while n do 
+		n := 2 + 2;
+		putint(2n)

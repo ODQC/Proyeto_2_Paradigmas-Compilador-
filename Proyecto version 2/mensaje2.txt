@@ -1,0 +1,52 @@
+
+Program
+- LetCommand
+- - SequentialDeclaration
+- - - VarDeclaration
+- - - - Identificador
+- - - - - n
+- - - - TypeDenoter  :  Boolean
+- - - - - Identificador
+- - - - - - Boolean
+- - - ConstDeclaration
+- - - - Identificador
+- - - - - b
+- - - - IntegerExpression  :  Integer
+- - - - - 2
+- - SequentialCommand
+- - - SequentialCommand
+- - - - SequentialCommand
+- - - - - AssignCommand
+- - - - - - VnameExpression  :  Boolean
+- - - - - - - Identificador
+- - - - - - - - n
+- - - - - - VnameExpression  :  Boolean
+- - - - - - - Identificador
+- - - - - - - - true
+- - - - - WhileCommand
+- - - - - - VnameExpression  :  Boolean
+- - - - - - - Identificador
+- - - - - - - - n
+- - - - - - AssignCommand
+- - - - - - - VnameExpression  :  Boolean
+- - - - - - - - Identificador
+- - - - - - - - - n
+- - - - - - - BinaryExpression  :  Integer
+- - - - - - - - IntegerExpression  :  Integer
+- - - - - - - - - 2
+- - - - - - - - Operador
+- - - - - - - - - +
+- - - - - - - - IntegerExpression  :  Integer
+- - - - - - - - - 2
+- - - - AssignCommand
+- - - - - VnameExpression  :  Integer
+- - - - - - Identificador
+- - - - - - - b
+- - - - - VnameExpression  :  Boolean
+- - - - - - Identificador
+- - - - - - - false
+- - - CallCommand
+- - - - Identificador
+- - - - - print
+- - - - Identificador
+- - - - - b

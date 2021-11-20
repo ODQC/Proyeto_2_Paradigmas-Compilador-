@@ -1,0 +1,8 @@
+let 
+	var n : Boolean;
+	const b ~ 2
+in 
+	begin
+	n := 2 + 2;
+	m := 6
+	end
