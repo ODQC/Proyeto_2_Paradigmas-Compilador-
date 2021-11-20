@@ -1,14 +1,4 @@
-# !usr/bin/python3
 
-'''Josue David Rodriguez Alfaro
-    Kevin Rodriguez Murillo
-    Luis Alejandro Salas Rojas
-    II S 2017 Compiladores e interpretes c
-    Creacion de Scanner para lenguaje minitriangulo
-    TEC Alajuela
-    Prof. Jaime Gutierrez Alfaro
-    '''
-'''Librerias a utilizar'''
 import io
 import string
 import sys
@@ -91,10 +81,7 @@ class Scanner():
                 break
             Lista.append(token)
      
-            
-   
-    
-          
+
   
   #**********************************************************************  
     def scan_token(self): 
@@ -128,44 +115,39 @@ class Scanner():
                 token = self.scan_ident()                   
                 break
             elif actual == ';':
-                #print("Imprimiendo tipo "+TOKENS[14]+" imprimiendo lo que es: ;"+" imprimiendo linea:" + str(self.linea) )
+                
                 token= Token(14, ';', self.linea)
-                #token=1
+            
                 self.actualizar_Caracter()
                 break
             elif actual == ',':
-                #print("Imprimiendo tipo "+TOKENS[14]+" imprimiendo lo que es: ,"+" imprimiendo linea:" + str(self.linea) )
-                #token=1
+             
                 token  = Token(14, ',', self.linea)
                 self.actualizar_Caracter()
                 break
             elif actual == ':':  
-                 #token = Token(14, ':', pos)
+                 
                 self.actualizar_Caracter()
                 token = self.verificar_Igual()# verifica si luego de dos puntos existe un igual
                 
                 break
             elif actual == '~':
-                #print("Imprimiendo tipo "+TOKENS[14]+" imprimiendo lo que es: ~"+" imprimiendo linea:" + str(self.linea) )
-                #token=1
+                
                 token = Token(14, '~', self.linea)
                 self.actualizar_Caracter()
                 break
             elif actual in Operadores:
-                #print("Imprimiendo tipo "+TOKENS[2]+" imprimiendo lo que es: "+actual+" imprimiendo linea:" + str(self.linea) )
-                #token=1
+                
                 token = Token(2, actual, self.linea)
                 self.actualizar_Caracter()
                 break
             elif actual == '(':
-                #print("Imprimiendo tipo "+TOKENS[14]+" imprimiendo lo que es: ("+" imprimiendo linea:" + str(self.linea) )
-                #token=1
+               
                 token = Token(14, '(', self.linea)
                 self.actualizar_Caracter()
                 break
             elif actual == ')':
-                #print("Imprimiendo tipo "+TOKENS[14]+" imprimiendo lo que es: )"+" imprimiendo linea:" + str(self.linea) )
-                #token=1
+               
                 token = Token(14, ')', self.linea)
                 self.actualizar_Caracter()
                 break
@@ -182,14 +164,14 @@ class Scanner():
         '''Funcion en la cual se verifica si el caracter siguiente a : es un igual o no'''
         
         if self.caracter == '=':
-            #print("Imprimiendo tipo "+TOKENS[14]+" imprimiendo lo que es: :="+" imprimiendo linea:" + str(self.linea) )
+           
             token = Token(14, ':=', self.linea)
             self.actualizar_Caracter()
             return token
         else:
             token = Token(14, ':', self.linea)
             return token
-            #print("Imprimiendo tipo "+TOKENS[14]+" imprimiendo lo que es: :"+" imprimiendo linea:" + str(self.linea) )
+          
     
 #**********************************************************************    
     def scan_int(self):
@@ -206,8 +188,7 @@ class Scanner():
             lista.append(self.actualizar_Caracter())
 
         if not self.caracter.isalpha():
-            #print("Imprimiendo tipo "+TOKENS[1]+" imprimiendo lo que es: "+str(int(''.join(lista))) +" imprimiendo linea:" + str(self.linea) )
-            #token=1
+           
             return Token(1, int(''.join(lista)), self.linea)
             #return token
 
@@ -235,7 +216,7 @@ class Scanner():
         if string_Lista in PalabrasReservadas:
            
              return  Token(18, string_Lista, self.linea)
-        #print("Imprimiendo tipo "+TOKENS[0]+" imprimiendo lo que es: "+string_Lista +" imprimiendo linea:" + str(self.linea) )
+      
         
         return Token(0, string_Lista, self.linea)
 
@@ -263,7 +244,7 @@ class Scanner():
  #**********************************************************************
 def verificar_Scanner(archivo):
     ''' Metodo main en el cual se lee linea a linea el archivo de texto plano'''
-
+    
     exprs = archivo 
     x=1 #indica el numero de linea
     lista=[]
@@ -271,7 +252,7 @@ def verificar_Scanner(archivo):
         scanner = Scanner(exp,x)
         x+=1
             
-           # print("************************************************\n")
+           
         try:
             scanner.scan()
             

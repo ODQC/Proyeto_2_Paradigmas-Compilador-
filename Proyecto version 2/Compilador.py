@@ -1,5 +1,5 @@
 import sys
-import Scanner
+import AnalizadorLexico
 import Parser
 import Checker
 import ImprimirArbol
@@ -30,40 +30,6 @@ class Controlador():
         return self.texto
 
 
-#**********************************************************************
-
-def compilar():
-
-    f = "test.txt"
-    controlador= Controlador(f)
-    i= controlador.verificar_Archivo()
-    if i ==1:
-        sc=Scanner
-     
-        Tokens = sc.verificar_Scanner(controlador.get_Archivo())
-        sc.getReportErrors()
-        print (Tokens)
-        if(sc.getReportErrors()==0):
-            Tree = Parser.iniciar_Parser(Tokens)
-            if (Parser.get_reportErrors() is True):
-                
-              
-                print("\n\n*********************************************************\n----------> Inicio proceso ANALISIS SEMANTICO\n\n")
-                visitor=Checker.Checker()
-                Checker.Checker.check(Tree)
-                
-
-                print("\n\nImprimiendo arbol decorado...\n----------------------------------------------------------------\n")
-                impresion = ImprimirArbol.ImprimirArbol(Tree)
-                impresion.imprime_Arbol(Tree)
-
-            else:
-                print ("--------------------------------------------------")
-        else:
-            print("\n---------------------------------------------------\n Se obtuvieron errores en el analisis sintactico")
-
-
-        
     
         
     

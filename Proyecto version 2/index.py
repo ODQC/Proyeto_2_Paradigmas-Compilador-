@@ -1,9 +1,10 @@
 from flask import Flask, render_template, request
 from flask.templating import DispatchingJinjaLoader
-from werkzeug import datastructures
 
 from AST import AssignCommand
 import Compilador
+
+from subprocess import check_output
 
 
 app = Flask(__name__, static_folder="assets")
@@ -13,6 +14,7 @@ def principal():
 
 @app.route('/result', methods=['GET','POST'])
 def result():
+
     text=""
     text = request.form.get('codigoText')
     content=text.splitlines()
@@ -20,7 +22,9 @@ def result():
         for line in content:
            f.write(line)
            f.write('\n')
+
     compilar()
+
     #carga las lineas
     f1=open('mensaje.txt','r')
     if(f1.mode=='r'):
@@ -30,12 +34,12 @@ def result():
     if(f2.mode=='r'):
         mensajeC2=f2.read()
 
- #   f3=open('errores.txt','r')
-   # if(f3.mode=='r'):
-    
-    #    mensajeC3=f3.read()
-    #mensajeC4= mensajeC1+mensajeC2
-    return render_template('index.html',code=text,errores=mensajeC1,arbolCodigo=mensajeC2)
+    f3=open('errores.txt','r')
+    if(f3.mode=='r'):
+        mensajeC3=f3.read()
+        mensajeC4= mensajeC1+mensajeC3
+
+    return render_template('index.html',code=text,errores=mensajeC4,arbolCodigo=mensajeC2)
 
 def compilar():
     with open('mensaje2.txt', 'a') as f:
@@ -47,11 +51,16 @@ def compilar():
     controlador= Compilador.Controlador(f)
     i= controlador.verificar_Archivo()
     if i ==1:
-        sc=Compilador.Scanner
+               
+        archivo1 = open('errores.txt','w')
+        archivo1.write('\n')
+        archivo1.close()
+
+        sc=Compilador.AnalizadorLexico
      
         Tokens = sc.verificar_Scanner(controlador.get_Archivo())
         sc.getReportErrors()
-        #print (Tokens)
+       
         if(sc.getReportErrors()==0):
             Tree = Compilador.Parser.iniciar_Parser(Tokens)
             if (Compilador.Parser.get_reportErrors() is True):
@@ -63,8 +72,7 @@ def compilar():
                 visitor=Compilador.Checker.Checker()
                 Compilador.Checker.Checker.check(Tree)
                 
-    
-          
+        
                 archivo = open('mensaje2.txt','w')
                 archivo.write('\n')
                 archivo.close()
@@ -81,17 +89,28 @@ def compilar():
             
             mensaje.append(mensaje4)
             print(mensaje4)
+     
 
     with open('mensaje.txt', 'w') as f:
         for line in mensaje:
            f.write(line)
            f.write('\n')
 
+ 
+
+
+
 
             
-    
+def before_request():
+    app.jinja_env.cache = {}
         
  
 
+
+
 if __name__ == '__main__':
-    app.run(debug=True, port =5000)
+    app.jinja_env.auto_reload = True
+    app.config['TEMPLATES_AUTO_RELOAD'] = True
+    app.before_request(before_request)
+    app.run(use_reloader= True,debug=True, port =5000)

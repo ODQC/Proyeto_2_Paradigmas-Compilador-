@@ -2,7 +2,7 @@
 #TEC - Costa Rica
 #Compiladores e Interpretes
 #Kevin Rodriguez - Josue Rodriguez - Alejandro Salas
-from Scanner import *
+from AnalizadorLexico import *
 from AST import *
 
 #Lista con los simbolos terminales
@@ -110,9 +110,21 @@ class Parser:
         else:
             if(self.posicion == 0):
                 exitoso = False;
-                print("Linea : " + self.arreglo[self.posicion-1].pos)
+                mensaje1="Linea : " + self.arreglo[self.posicion-1].pos
+                print(mensaje1)
+                with open('errores.txt', 'a') as f:
+                    f.write(mensaje1)
+                    f.write('\n')
+
                 reportErrors+=1
-                print ("Error de Sintáxis: El programa deberia empezar con un Single Command \n")
+
+
+                mensaje2="Error de Sintáxis: El programa deberia empezar con un Single Command \n"
+                print(mensaje2)
+                with open('errores.txt', 'a') as f:
+                   f.write(mensaje2)
+                   f.write('\n')
+
 
         return temp
 
@@ -131,7 +143,7 @@ class Parser:
                 VALOR = self.arreglo[self.posicion].val
                 
                 IDENTIFICADOR = self.parse_Identificador()
-                #print ("El arbol3 es : " + str(arbol))
+            
                 encontre = True
                 if(self.token_Actual.token == self.buscarLista("dospuntosigual")):
                     ec2 = True;
@@ -152,21 +164,70 @@ class Parser:
                         return CallCommand(IDENTIFICADOR, EXPRESSION)
                     else:
                         exitoso = False;
-                        print("Linea : " + str(self.arreglo[self.posicion-1].pos))
+                        mensaje3="Linea : " + str(self.arreglo[self.posicion-1].pos)
+                        print(mensaje3)
+                        with open('errores.txt', 'a') as f:
+                           f.write(mensaje3)
+                           f.write('\n')
+
+
+
                         reportErrors+=1
-                        print ("Error de Sintáxis: Expresion le falta Paréntesis de cierre [ ) ] \n")
+                        mensaje4="Error de Sintáxis: Expresion le falta Paréntesis de cierre [ ) ] \n"
+                        print(mensaje4)
+                        with open('errores.txt', 'a') as f:
+                           f.write(mensaje4)
+                           f.write('\n')
+
+
+
+
                 else:
                     if(ec2 == False):
                         exitoso = False;
-                        print("Linea : " + str(self.arreglo[self.posicion].pos))
+                        
+                        mensaje5="Linea : " + str(self.arreglo[self.posicion].pos)
+                        print(mensaje5)
+                        with open('errores.txt', 'a') as f:
+                           f.write(mensaje5)
+                           f.write('\n')
+
+
+
+
                         reportErrors+=1
-                        print("Error de Sintaxis: Assign Command le falta [ := ]" + "en lugar de: " + str(self.arreglo[self.posicion].val) + " \n")
+                        mensaje6="Error de Sintaxis: Assign Command le falta [ := ]" + "en lugar de: " + str(self.arreglo[self.posicion].val) + " \n"
+                        print(mensaje6)
+                        with open('errores.txt', 'a') as f:
+                            f.write(mensaje6)
+                            f.write('\n')
+
+                        
+
+
+
+
                         return False;
                     else:
                         exitoso = False;
-                        print("Linea : " + str( self.arreglo[self.posicion].pos))
+
+                        mensaje7="Linea : " + str( self.arreglo[self.posicion].pos)
+                        print(mensaje7)
+                        with open('errores.txt', 'a') as f:
+                            f.write(mensaje7)
+                            f.write('\n')
+
+
+
                         reportErrors+=1
-                        print ("Error de Sintáxis: Expresion le falta Paréntesis de inicio [ ( ] \n")
+                        mensaje8="Error de Sintáxis: Expresion le falta Paréntesis de inicio [ ( ] \n"
+                        print(mensaje8)
+                        with open('errores.txt', 'a') as f:
+                            f.write(mensaje8)
+                            f.write('\n')
+
+
+
                         return False;
                 return True
         return False
@@ -206,17 +267,42 @@ class Parser:
                     self.aceptarToken()
                 else:
                     exitoso = False;
-                    print("Linea : " + str(self.arreglo[self.posicion].pos))
+                    mensaje9="Linea : " + str(self.arreglo[self.posicion].pos)
+                    print(mensaje9)
+                    with open('errores.txt', 'a') as f:
+                        f.write(mensaje9)
+                        f.write('\n')
+
+
+
                     reportErrors+=1
-                    print ("Error de Sintáxis : If le falta la palabra reservada [ then ] \n")
+                    mensaje10="Error de Sintáxis : If le falta la palabra reservada [ then ] \n"
+                    print(mensaje10)
+                    with open('errores.txt', 'a') as f:
+                        f.write(mensaje10)
+                        f.write('\n')
+
+
                 COMMAND = self.parse_Single_Command()
                 if(self.token_Actual.token == self.buscarLista("else")):
                     self.aceptarToken()
                 else:
                     exitoso = False;
-                    print("Linea : " + str(self.arreglo[self.posicion].pos))
+                    mensaje11="Linea : " + str(self.arreglo[self.posicion].pos)
+                    print(mensaje11)
+                    with open('errores.txt', 'a') as f:
+                        f.write(mensaje11)
+                        f.write('\n')
+
+
                     reportErrors+=1
-                    print ("Error de Sintáxis : If le falta la palabra reservada [ else ] \n")
+                    mensaje12="Error de Sintáxis : If le falta la palabra reservada [ else ] \n"
+                    print(mensaje12)
+                    with open('errores.txt', 'a') as f:
+                        f.write(mensaje12)
+                        f.write('\n')
+
+
                 COMMAND_AUX = self.parse_Single_Command()
                 return IfCommand(EXPRESSION, COMMAND, COMMAND_AUX)
         return False
@@ -239,9 +325,22 @@ class Parser:
                 else:
                     exitoso = False;
                     b = int(self.arreglo[self.posicion].pos)-1
-                    print("Linea : " + str(b))
+                    mensaje13= "Linea : " + str(b)
+                    print(mensaje13)
+                    with open('errores.txt', 'a') as f:
+                        f.write(mensaje13)
+                        f.write('\n')
+
+
                     reportErrors+=1
-                    print ("Error de Sintáxis: While le falta la palabra reservada [ do ] \n")
+                    mensaje14="Error de Sintáxis: While le falta la palabra reservada [ do ] \n"
+                    print(mensaje14)
+                    with open('errores.txt', 'a') as f:
+                        f.write(mensaje14)
+                        f.write('\n')
+
+
+
                 COMMAND = self.parse_Single_Command()
                 return WhileCommand(EXPRESSION,COMMAND)
         return False
@@ -268,14 +367,41 @@ class Parser:
                      
                     else:
                         exitoso = False;
-                        print("Linea : " + str(self.arreglo[self.posicion].pos))
+                        mensaje15="Linea : " + str(self.arreglo[self.posicion].pos)
+                        print(mensaje15)
+                        with open('errores.txt', 'a') as f:
+                            f.write(mensaje15)
+                            f.write('\n')
+
+
+
+
                         reportErrors+=1
-                        print ("Error de Sintáxis: For le falta la palabra reservada [lim] \n")
+                        mensaje16="Error de Sintáxis: For le falta la palabra reservada [lim] \n"
+                        print(mensaje16)
+                        with open('errores.txt', 'a') as f:
+                            f.write(mensaje16)
+                            f.write('\n')
+
+
                 else:
                     exitoso = False;
-                    print("Linea : " + str(self.arreglo[self.posicion].pos))
+                    mensaje17="Linea : " + str(self.arreglo[self.posicion].pos)
+                    print(mensaje17)
+                    with open('errores.txt', 'a') as f:
+                        f.write(mensaje17)
+                        f.write('\n')
+
+
                     reportErrors+=1
-                    print ("Error de Sintáxis: For le falta la palabra reservada [ in ]  \n")
+                    mensaje18="Error de Sintáxis: For le falta la palabra reservada [ in ]  \n"
+                    print(mensaje18)
+                    with open('errores.txt', 'a') as f:
+                        f.write(mensaje18)
+                        f.write('\n')
+
+
+
           
                 EXPRESSION2 = self.parse_Expression()
                 
@@ -302,9 +428,25 @@ class Parser:
                 else:
                     exitoso = False;
                     b = int(self.arreglo[self.posicion].pos)-1
-                    print("Linea : " + str(b))
+                    mensaje19="Linea : " + str(b)
+                    print(mensaje19)
+                    with open('errores.txt', 'a') as f:
+                        f.write(mensaje19)
+                        f.write('\n')
+
+
+
                     reportErrors+=1
-                    print ("Error de Sintáxis: let le falta la palabra reservada [ in ] \n")
+                    mensaje20="Error de Sintáxis: let le falta la palabra reservada [ in ] \n"
+                    print(mensaje20)
+                    with open('errores.txt', 'a') as f:
+                        f.write(mensaje20)
+                        f.write('\n')
+
+
+
+
+
                 COMMAND = self.parse_Single_Command()
                 return LetCommand(DECLARATION,COMMAND)
         return False
@@ -357,9 +499,21 @@ class Parser:
                         b = self.arreglo[self.posicion-1].pos
                         b = int(b) + 1
                         exitoso = False;
-                        print("Linea : " + str(b))
+                        mensaje21="Linea : " + str(b)
+                        print(mensaje21)
+                        with open('errores.txt', 'a') as f:
+                            f.write(mensaje21)
+                            f.write('\n')
+
+
                         reportErrors+=1
-                        print ("Error de Sintáxis: Begin deberia terminar con la palabra reservada [ end ] \n")
+                        mensaje22="Error de Sintáxis: Begin deberia terminar con la palabra reservada [ end ] \n"
+                        print(mensaje22)
+                        with open('errores.txt', 'a') as f:
+                            f.write(mensaje22)
+                            f.write('\n')
+
+
                 return True
         return False
 
@@ -414,17 +568,42 @@ class Parser:
             else:
                 exitoso = False;
                 self.token_Actual = self.scannear()
-                print("Linea : " + str(self.arreglo[self.posicion-1].pos))
+                mensaje23="Linea : " + str(self.arreglo[self.posicion-1].pos)
+                print(mensaje23)
+                with open('errores.txt', 'a') as f:
+                    f.write(mensaje23)
+                    f.write('\n')
+                
+
+
                 reportErrors+=1
-                print ("Error de Sintáxis: Expresion le falta Paréntesis de cierre [ ) ] \n")
+                mensaje24="Error de Sintáxis: Expresion le falta Paréntesis de cierre [ ) ] \n"
+                print(mensaje24)
+                with open('errores.txt', 'a') as f:
+                    f.write(mensaje24)
+                    f.write('\n')
+
         else:
             exitoso = False;
             self.token_Actual = self.scannear()
             b = self.arreglo[self.posicion-1].pos
             b = int(b) + 0
-            print("Linea : " + str(b))
+            mensaje25="Linea : " + str(b)
+            print(mensaje25)
+            with open('errores.txt', 'a') as f:
+                f.write(mensaje25)
+                f.write('\n')
+
+
             reportErrors+=1
-            print ("Error de Sintáxis: Expresion es invalida, no cumple con ser Identificador, Integer , Operador Expresion o ( EXpresion ) \n")
+            mensaje26="Error de Sintáxis: Expresion es invalida, no cumple con ser Identificador, Integer , Operador Expresion o ( EXpresion ) \n"
+            print(mensaje26)
+            with open('errores.txt', 'a') as f:
+                f.write(mensaje26)
+                f.write('\n')
+
+
+
 
     #Funcion parse_Declaration
     #Esta funcion se encarga de verificar primero que este entre los limites del arreglo
@@ -442,9 +621,21 @@ class Parser:
         DECLARATION = self.parse_Single_Declaration()
         if(self.token_Actual.token != self.buscarLista("puntoycoma")):
             if(self.arreglo[self.posicion].val == "const" or self.arreglo[self.posicion].val == "var"):
-                print("Linea : " + str(self.arreglo[self.posicion].pos))
+                mensaje27="Linea : " + str(self.arreglo[self.posicion].pos)
+                print(mensaje27)
+                with open('errores.txt', 'a') as f:
+                    f.write(mensaje27)
+                    f.write('\n')
+
                 reportErrors+=1
-                print ("Error de Sintáxis: Declaracion le falta [ ; ] \n")
+                mensaje28="Error de Sintáxis: Declaracion le falta [ ; ] \n"
+                print(mensaje28)
+                with open('errores.txt', 'a') as f:
+                    f.write(mensaje28)
+                    f.write('\n')
+
+
+
                 exitoso = False;
         tipo = self.buscarLista("puntoycoma")
         while (self.token_Actual.token == tipo):
@@ -489,14 +680,44 @@ class Parser:
                      exitoso = False;
                      b = self.arreglo[self.posicion].pos
                      b = int(b) +- 1
-                     print("Linea : " + str(b))
+                     mensaje29="Linea : " + str(b)
+                     print(mensaje29)
+                     with open('errores.txt', 'a') as f:
+                        f.write(mensaje29)
+                        f.write('\n')
+
+
+
                      reportErrors+=1
-                     print("Error de Sintaxis: Quitar el simbolo [;] \n")
+                     mensaje30="Error de Sintaxis: Quitar el simbolo [;] \n"
+                     print(mensaje30)
+                     with open('errores.txt', 'a') as f:
+                         f.write(mensaje30)
+                         f.write('\n')
+
+
+
                  else:
                      exitoso = False;
-                     print("Linea : " + str(self.arreglo[self.posicion].pos))
+                     mensaje31="Linea : " + str(self.arreglo[self.posicion].pos)
+                     print(mensaje31)
+                     with open('errores.txt', 'a') as f:
+                         f.write(mensaje31)
+                         f.write('\n')
+
+
+
+
                      reportErrors+=1
-                     print ("Error de Sintáxis: Despues [ let ] deberia seguir un Single Declaration [ const ] o [ var ] \n")
+                     mensaje32="Error de Sintáxis: Despues [ let ] deberia seguir un Single Declaration [ const ] o [ var ] \n"
+                     print(mensaje32)
+                     with open('errores.txt', 'a') as f:
+                         f.write(mensaje32)
+                         f.write('\n')
+
+
+
+
                      self.aceptarToken()
                      self.parse_Identificador()
                      if(self.arreglo[self.posicion].val == "~"):
@@ -507,9 +728,21 @@ class Parser:
                           self.parse_Type_Denoter()
             else:
                 exitoso = False;
-                print("Linea : " + str(self.arreglo[self.posicion].pos))
+                mensaje33="Linea : " + str(self.arreglo[self.posicion].pos)
+                print(mensaje33)
+                with open('errores.txt', 'a') as f:
+                    f.write(mensaje33)
+                    f.write('\n')
+
+
                 reportErrors+=1
-                print ("Error de Sintáxis: Despues [ let ] deberia seguir un Single Declaration [ const ] o [ var ] \n")
+                mensaje34="Error de Sintáxis: Despues [ let ] deberia seguir un Single Declaration [ const ] o [ var ] \n"
+                print(mensaje34)
+                with open('errores.txt', 'a') as f:
+                    f.write(mensaje34)
+                    f.write('\n')
+
+
                 self.aceptarToken()
                 self.parse_Identificador()
                 if(self.arreglo[self.posicion].val == "~"):
@@ -553,14 +786,39 @@ class Parser:
                 exitoso = False;
                 b = self.arreglo[self.posicion].pos
                 b = int(b)
-                print("Linea : " + str(b))
+                mensaje35="Linea : " + str(b)
+                print(mensaje35)
+                with open('errores.txt', 'a') as f:
+                    f.write(mensaje35)
+                    f.write('\n')
+
+
+
                 reportErrors+=1
-                print("Error de Sintaxis: [ var ] Tiene que terminar con un Type-denoter [ Identificador ] que sea valido \n")
+                mensaje36="Error de Sintaxis: [ var ] Tiene que terminar con un Type-denoter [ Identificador ] que sea valido \n"
+                print(mensaje36)
+                with open('errores.txt', 'a') as f:
+                    f.write(mensaje36)
+                    f.write('\n')
+
+
             else:
                 exitoso = False;
-                print("Linea : " + str(self.arreglo[self.posicion].pos))
+                mensaje37="Linea : " + str(self.arreglo[self.posicion].pos)
+                print(mensaje37)
+                with open('errores.txt', 'a') as f:
+                    f.write(mensaje37)
+                    f.write('\n')
+
+
                 reportErrors+=1
-                print ("Error de Sintáxis: Identificador invalido \n")
+                mensaje38="Error de Sintáxis: Identificador invalido \n"
+                print(mensaje38)
+                with open('errores.txt', 'a') as f:
+                    f.write(mensaje38)
+                    f.write('\n')
+
+
 
     #Funcion Integer_Literal
     #Esta funcion se encarga de verificar primero que este entre los limites del arreglo
@@ -582,9 +840,22 @@ class Parser:
         else:
             self.token_Actual = self.scannear()
             exitoso = False;
-            print("Linea : " + str(self.arreglo[self.posicion].pos))
+            mensaje39="Linea : " + str(self.arreglo[self.posicion].pos)
+            print(mensaje39)
+            with open('errores.txt', 'a') as f:
+                f.write(mensaje39)
+                f.write('\n')
+
+
+
             reportErrors+=1
-            print ("Error de Sintáxis: No es un integer \n")
+            mensaje40="Error de Sintáxis: No es un integer \n"
+            print(mensaje40)
+            with open('errores.txt', 'a') as f:
+                f.write(mensaje40)
+                f.write('\n')
+
+
 
     #Funcion parse_Operador
     #Esta funcion se encarga de verificar primero que este entre los limites del arreglo
@@ -605,9 +876,21 @@ class Parser:
             return Operador(NOMBRE)
         else:
             exitoso = False;
-            print("Linea : " + self.arreglo[self.posicion].pos)
+            mensaje41="Linea : " + self.arreglo[self.posicion].pos
+            print(mensaje41)
+            with open('errores.txt', 'a') as f:
+                f.write(mensaje41)
+                f.write('\n')
+
+
             reportErrors+=1
-            print ("Error de Sintáxis: No es un operador \n")
+            mensaje42="Error de Sintáxis: No es un operador \n"
+            print(mensaje42)
+            with open('errores.txt', 'a') as f:
+                f.write(mensaje42)
+                f.write('\n')
+
+
 
 
 
@@ -633,19 +916,50 @@ class Parser:
             self.token_Actual = self.scannear()
         else:
             if(esperado == self.buscarLista("rabochancho")):
-                print("Linea : " + str(self.arreglo[self.posicion].pos))
+                mensaje43="Linea : " + str(self.arreglo[self.posicion].pos)
+                print(mensaje43)
+                with open('errores.txt', 'a') as f:
+                    f.write(mensaje43)
+                    f.write('\n')
+
+
                 reportErrors+=1
-                print("Error de Sintaxis: Esperaba el simbolo [ ~ ] antes de la expresion para [ const ] \n")
+                mensaje44="Error de Sintaxis: Esperaba el simbolo [ ~ ] antes de la expresion para [ const ] \n"
+                print(mensaje44)
+                with open('errores.txt', 'a') as f:
+                    f.write(mensaje44)
+                    f.write('\n')
+
+
+
                 exitoso = False
                 self.token_Actual = self.scannear()
             elif((esperado ==  self.buscarLista("dospuntos"))):
-                print("Linea : " + str(self.arreglo[self.posicion].pos))
+                mensaje45="Linea : " + str(self.arreglo[self.posicion].pos)
+                print(mensaje45)
+                with open('errores.txt', 'a') as f:
+                    f.write(mensaje45)
+                    f.write('\n')
+
+
+
                 reportErrors+=1
-                print ("Error de Sintaxis: Esperaba el simbolo [ : ] antes del identificador para [ var ] \n")
+                mensaje46="Error de Sintaxis: Esperaba el simbolo [ : ] antes del identificador para [ var ] \n"
+                print(mensaje46)
+                with open('errores.txt', 'a') as f:
+                    f.write(mensaje46)
+                    f.write('\n')
+
+
                 exitoso = False;
                 self.token_Actual = self.scannear()
             else:
-                 print("ERROR")
+                 mensaje47="ERROR"
+                 print(mensaje47)
+                 with open('errores.txt', 'a') as f:
+                   f.write(mensaje47)
+                   f.write('\n')
+
                  reportErrors+=1
                  exitoso = False;
                  self.token_Actual = self.scannear()
@@ -809,10 +1123,22 @@ class Parser:
         if(self.token_Actual.token == self.buscarLista("eot")):
             print("------------------------------")
             if(exitoso == True):
-                print("El proceso de analisis sintactico ha terminado con exito");
+                mensaje48="El proceso de analisis sintactico ha terminado con exito"
+                print(mensaje48)
+                with open('errores.txt', 'a') as f:
+                    f.write(mensaje48)
+                    f.write('\n')
             else:
-                print("El proceso de analisis sintactico tuvo errores de sintaxis")
-            print("------------------------------")
+                mensaje49="El proceso de analisis sintactico tuvo errores de sintaxis"
+                print(mensaje49)
+                with open('errores.txt', 'a') as f:
+                    f.write(mensaje49)
+                    f.write('\n')
+            mensaje50="==========================================================="
+            print(mensaje50)
+            with open('errores.txt', 'a') as f:
+                f.write(mensaje50)
+                f.write('\n')
         return PROGRAM    
         
 def get_reportErrors():
@@ -821,7 +1147,11 @@ def get_reportErrors():
 def iniciar_Parser(Matriz):
     inicio = Parser(Matriz)
     print("\n------------------------------")
-    print("Iniciando proceso de ANALISIS SINTACTICO....\n")
+    mensaje51="  ========================== IniciandoANALISIS SINTACTICO ==========================\n"
+    print(mensaje51)
+    with open('errores.txt', 'a') as f:
+        f.write(mensaje51)
+        f.write('\n')
     arbol = inicio.empezar_parse()
 
     return arbol

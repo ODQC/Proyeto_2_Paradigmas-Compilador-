@@ -1,11 +1,10 @@
 let 
-	var n : Boolean;
-	const b ~ 2
+var n : integer;
+const b ~ false 
 in 
-	begin
-	n := true;
-	while n do 
-		n := 2 + 2;
-		b := false;
-		print(b)
-	end
+for b in H;
+begin
+n := 0;
+b := 2false
+
+	

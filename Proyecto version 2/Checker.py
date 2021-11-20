@@ -460,14 +460,14 @@ def escribirArchivo():
     '''
     Metodo en el que se escribe en un archivo.asm el codigo generado, agregando cada una de las secciones que se fueron armando durante el recorrido
     '''
-    global sectionBSS
-    global sectionDATA
-    global sectionTEXT
-    file = open("generado.asm","w")
-    file.write(sectionDATA)
-    file.write(sectionBSS)
-    file.write(sectionTEXT)
-    file.close() 
+   # global sectionBSS
+    #global sectionDATA
+    #global sectionTEXT
+  #  file = open("generado.asm","w")
+   # file.write(sectionDATA)
+    #file.write(sectionBSS)
+    #file.write(sectionTEXT)
+    #file.close() 
         
 def comparePrint(variable,identificador):
     '''

@@ -1,6 +1,4 @@
-#!/usr/bin/env python
-# -*- coding: utf-8 -*-
- 
+
 class IdentificationTable(object):
     '''
     Funcion que inicializa la tabla de simbolos y tiene como atributos tabla y scope

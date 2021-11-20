@@ -1,0 +1,14 @@
+
+  ========================== IniciandoANALISIS SINTACTICO ==========================
+
+Linea : 5
+Error de Sintáxis: For le falta la palabra reservada [lim] 
+
+Linea : 8
+Error de Sintáxis: Expresion es invalida, no cumple con ser Identificador, Integer , Operador Expresion o ( EXpresion ) 
+
+Linea : 9
+Error de Sintáxis: Begin deberia terminar con la palabra reservada [ end ] 
+
+El proceso de analisis sintactico tuvo errores de sintaxis
+===========================================================
